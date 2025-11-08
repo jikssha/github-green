@@ -13,8 +13,8 @@
 ### 第 2 步：设置 Secrets
 1. 打开仓库 → **Settings → Secrets and variables → Actions**。
 2. 点击 **New repository secret**，依次添加：
-   - `ACTOR_NAME` → 你的 GitHub 用户名（如 `vaghr`）
-   - `ACTOR_EMAIL` → 你的 GitHub noreply 邮箱（如 `12345678+vaghr@users.noreply.github.com`）
+   name- `ACTOR_NAME` → secret-你的 GitHub 用户名（如 `vaghr`）
+   name- `ACTOR_EMAIL` → secret-你的 GitHub noreply 邮箱（如 `12345678+vaghr@users.noreply.github.com`）
    - （可选）`PUSH_TOKEN` → 个人访问令牌（PAT）
 
 ### 第 3 步：运行参数（可选修改）
@@ -33,7 +33,14 @@ MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
 2. 选择 `Randomized Daily Commits (Beijing schedule)` 工作流。
 3. 点击 **Run workflow** 手动运行一次。
 4. 日志出现 `Pushed commits successfully.` 表示成功。
-
+5. 如果一直在运行未显示成功，这是因为添加了延迟，解决办法
+   把.github/workflows/commit-random.yml中
+   MAX_START_DELAY_MINUTES: "60"
+改为
+  MAX_START_DELAY_MINUTES: "0"
+  MIN_SLEEP: "1"
+  MAX_SLEEP: "3"
+这样就不用再等60分钟了。
 ---
 
 🧠 提示：自动化提交能让账户保持活跃，但结合真实项目提交会让贡献更自然。
