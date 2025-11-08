@@ -2,7 +2,7 @@ name: Randomized Daily Commits (Beijing schedule)
 
 on:
   schedule:
-    - cron: '0 1,8,15 * * *'  # UTC 01:00,08:00,15:00 → 北京时间 09:00/16:00/23:00
+    - cron: '0 1,9,11 * * *'  # UTC 01:00,08:00,15:00 → 北京时间 09:00/16:00/23:00
   workflow_dispatch: {}
 
 permissions:
@@ -32,8 +32,8 @@ jobs:
           SKIP_PROB: "0.08"
           MAX_COMMITS: "3"
           MIN_SLEEP: "15"
-          MAX_SLEEP: "18"
-          MAX_START_DELAY_MINUTES: "0"
+          MAX_SLEEP: "90"
+          MAX_START_DELAY_MINUTES: "55"
         run: |
           chmod +x .github/scripts/random_commit.py
           python3 .github/scripts/random_commit.py
