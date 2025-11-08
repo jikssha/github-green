@@ -35,12 +35,11 @@ MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
 4. 日志出现 `Pushed commits successfully.` 表示成功。
 5. 如果一直在运行未显示成功，这是因为添加了延迟，解决办法
    把.github/workflows/commit-random.yml中
-   MAX_START_DELAY_MINUTES: "60"
+  MAX_START_DELAY_MINUTES: "60"
 改为
   MAX_START_DELAY_MINUTES: "0"
-  MIN_SLEEP: "1"
-  MAX_SLEEP: "3"
-这样就不用再等60分钟了。
+
+即可
 ---
 
 🧠 提示：自动化提交能让账户保持活跃，但结合真实项目提交会让贡献更自然。
