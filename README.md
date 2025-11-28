@@ -4,7 +4,7 @@
     <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="Logo" width="120" height="120">
   </a>
 
-  <h1 align="center">🌱 Randomized Commit Template</h1>
+  <h1 align="center">🌱 Github green 自动常绿脚本</h1>
 
   <p align="center">
     <b>GitHub 贡献图绿意盎然</b>
