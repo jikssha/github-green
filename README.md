@@ -1,5 +1,3 @@
-**Github green** 是一个让你的GitHub帐号保持常绿的自动化工具。
----
 <br />
 <div align="center">
   <a href="https://github.com/jikssha/github-green">
