@@ -12,14 +12,14 @@
     Keep your GitHub contribution graph green
     <br />
     <br />
-    <a href="https://github.com/jikssha/randomized-commit-template/actions">
+    <a href="(https://github.com/jikssha/github-green/actions)">
       <img src="https://img.shields.io/github/actions/workflow/status/jikssha/randomized-commit-template/ci.yml?style=flat-square&logo=github-actions&label=Build" alt="Build Status">
     </a>
-    <a href="https://github.com/jikssha/randomized-commit-template/stargazers">
+    <a href="https://github.com/jikssha/github-green/stargazers">
       <img src="https://img.shields.io/github/stars/jikssha/randomized-commit-template?style=flat-square&color=yellow" alt="Stars">
     </a>
-    <a href="https://github.com/jikssha/randomized-commit-template/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/jikssha/randomized-commit-template?style=flat-square&color=blue" alt="License">
+    <a href="https://github.com/jikssha/github-green/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/jikssha/github-green?style=flat-square&color=blue" alt="License">
     </a>
   </p>
 </div>
