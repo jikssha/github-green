@@ -43,20 +43,20 @@ else:
     print("Warning: no token found. Push may fail.")
 
 files = [
-    "README.md",
-    "notes/daily.md",
+    "data/activity_log.txt",
+    "data/status.log",
     "docs/diary.md",
     "changelog.md",
     "data/log.txt"
 ]
 messages = [
-    "chore: daily update",
-    "docs: small tweak",
-    "fix: minor typo",
-    "style: format",
-    "ci: refresh",
-    "✨ small update",
-    "🔧 maintenance"
+    "chore: update activity log",
+    "docs: update status",
+    "fix: minor log correction",
+    "style: auto-format logs",
+    "ci: scheduled update",
+    "✨ bot activity",
+    "🔧 routine check"
 ]
 
 for f in files:
