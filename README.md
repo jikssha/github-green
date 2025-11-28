@@ -1,10 +1,10 @@
 <br />
 <div align="center">
-  <a href="https://github.com/jikssha/randomized-commit-template">
+  <a href="https://github.com/jikssha/github-green">
     <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="Logo" width="120" height="120">
   </a>
 
-  <h1 align="center">🌱 Github green 自动常绿脚本</h1>
+  <h1 align="center">🌱 Github Green 自动常绿脚本</h1>
 
   <p align="center">
     <b>GitHub 贡献图绿意盎然</b>
@@ -12,18 +12,17 @@
     Keep your GitHub contribution graph green
     <br />
     <br />
-    <a href="(https://github.com/jikssha/github-green/actions)">
-      <img src="https://img.shields.io/github/actions/workflow/status/jikssha/randomized-commit-template/ci.yml?style=flat-square&logo=github-actions&label=Build" alt="Build Status">
+    <a href="https://github.com/jikssha/github-green/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/jikssha/github-green/main.yml?style=flat-square&logo=github-actions&label=Build" alt="Build Status">
     </a>
     <a href="https://github.com/jikssha/github-green/stargazers">
-      <img src="https://img.shields.io/github/stars/jikssha/randomized-commit-template?style=flat-square&color=yellow" alt="Stars">
+      <img src="https://img.shields.io/github/stars/jikssha/github-green?style=flat-square&color=2ea44f" alt="Stars">
     </a>
     <a href="https://github.com/jikssha/github-green/blob/main/LICENSE">
       <img src="https://img.shields.io/github/license/jikssha/github-green?style=flat-square&color=blue" alt="License">
     </a>
   </p>
 </div>
-
 ---
 
 ## 🤖Github green 常绿活跃 — 一键部署指南
