@@ -7,9 +7,9 @@
   <h1 align="center">🌱 Randomized Commit Template</h1>
 
   <p align="center">
-    <b>让你的 GitHub 贡献图“绿”得自然，“绿”得随机，“绿”得有灵魂。</b>
+    <b>GitHub 贡献图绿意盎然</b>
     <br />
-    Keep your GitHub contribution graph green, organic, and totally unsuspicious.
+    Keep your GitHub contribution graph green
     <br />
     <br />
     <a href="https://github.com/jikssha/randomized-commit-template/actions">
@@ -26,35 +26,44 @@
 
 ---
 
-<details>
-  <summary><b>📚 目录 (Table of Contents)</b></summary>
-  <ol>
-    <li><a href="#-about-the-project">项目介绍</a></li>
-    <li><a href="#-features">核心特性</a></li>
-    <li><a href="#-getting-started">快速开始</a></li>
-    <li><a href="#-configuration">高级配置</a></li>
-    <li><a href="#-contributing">参与贡献</a></li>
-    <li><a href="#-license">版权说明</a></li>
-  </ol>
-</details>
+## 🤖Github green 常绿活跃 — 一键部署指南
 
----
+这个仓库模板可以让你的 GitHub 账号每天自动、随机提交代码，让贡献日历保持自然活跃。
+它利用 GitHub Actions 定时触发脚本，在不同时间点生成随机提交。
 
-## 🤖 About The Project
+**Github green** 是一个基于 GitHub Actions 的自动化工具。不同于那些只会机械式每天提交一次的笨拙脚本，本项目专注于**“模拟真实人类行为”**。它会在随机的时间、产生随机数量的提交，甚至偶尔“偷懒”不提交，从而生成一张看起来完全自然的贡献热力图。
 
-> "Why is your GitHub profile so green?" 
-> "I work hard. Or maybe... I just have a smart bot." 😉
+### 🚀 一键部署步骤
+### 第 1 步：创建仓库
+1. 打开本模板仓库页面。
+2. 点击右上角 **Use this template → Create a new repository**。
+3. 填写仓库名称（如 `commit-bot`），点击 **Create repository**。
 
-你是否曾因为几天没有提交代码而感到焦虑？或者只是想让你的 GitHub 个人主页看起来更加活跃和酷炫？
+### 第 2 步：设置 Secrets
+1. 打开仓库 → **Settings → Secrets and variables → Actions**。
+2. 点击 **New repository secret**，依次添加：
+   - `ACTOR_NAME` → 你的 GitHub 用户名（如 `jiksska`）
+   - `ACTOR_EMAIL` → 你的 GitHub noreply 邮箱（如 `12345678+jiksska@users.noreply.github.com`）
+   - （可选）`PUSH_TOKEN` → 个人访问令牌（PAT）
 
-**Randomized Commit Template** 是一个基于 GitHub Actions 的自动化工具。不同于那些只会机械式每天提交一次的笨拙脚本，本项目专注于**“模拟真实人类行为”**。它会在随机的时间、产生随机数量的提交，甚至偶尔“偷懒”不提交，从而生成一张看起来完全自然的贡献热力图。
+### 第 3 步：运行参数（可选修改）
+工作流默认：每天北京时间 **09:00 / 16:00 / 23:00** 自动运行；每次随机提交 0～3 次。
+可在 `.github/workflows/commit-random.yml` 中调整参数：
+```yaml
+SKIP_PROB: "0.08"               # 休息概率
+MAX_COMMITS: "3"                # 每次运行最多提交次数
+MIN_SLEEP: "15"                 # 提交间最短等待（秒）
+MAX_SLEEP: "120"                # 提交间最长等待（秒）
+MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
+```
 
-### 为什么选择这个模板？
-* 🚫 **拒绝机械感**：不再是死板的一天一更。
-* ☁️ **无需服务器**：完全依赖 GitHub Actions，免费且稳定。
-* 🛠 **高度可配**：你可以控制提交的频率、概率和时间段。
+### 第 4 步：运行测试
+1. 打开仓库顶部菜单 **Actions**。
+2. 选择 `Randomized Daily Commits (Beijing schedule)` 工作流。
+3. 点击 **Run workflow** 手动运行一次。
+4. 日志出现 `Pushed commits successfully.` 表示成功。
 
----
+🎉 **搞定！** 喝杯咖啡，坐等你的 Profile 变绿吧。
 
 ## ✨ Features
 
@@ -70,54 +79,5 @@
     * 只更新特定的日志文件（如 `LAST_UPDATED`），绝不污染你的核心代码库。
 
 ---
-
-## 🚀 Getting Started
-
-只需三步，你也能拥有迷人的“绿墙”！
-
-### 1. Use this Template
-点击页面右上角的 **[Use this template](https://github.com/jikssha/randomized-commit-template/generate)** 按钮，将本项目 Fork 到你的账号下。
-> **注意**：建议将仓库设为 **Public**，否则贡献图可能仅对你自己可见（取决于你的 GitHub 设置）。
-
-### 2. Configure Token (可选)
-如果默认的 `GITHUB_TOKEN` 权限不够（通常默认够用），你需要：
-1.  在 [Settings > Developer settings](https://github.com/settings/tokens) 生成一个新的 Token (勾选 `repo` 权限)。
-2.  在你新仓库的 `Settings > Secrets and variables > Actions` 中添加一个 Secret，命名为 `GH_TOKEN`。
-
-### 3. Enable Workflow
-进入你仓库的 **Actions** 标签页。
-* 如果看到警告，请点击 "I understand my workflows, go ahead and enable them"。
-* 你可以手动触发一次 `Run workflow` 来测试是否生效。
-
-🎉 **搞定！** 喝杯咖啡，坐等你的 Profile 变绿吧。
-
----
-
-## ⚙️ Configuration
-
-你可以通过修改 `.github/workflows/main.yml` (或你的实际 workflow 文件名) 来自定义行为。
-
-### 🕒 修改运行频率 (Cron)
-```yaml
-on:
-  schedule:
-    # 默认：每 6 小时检查一次
-    - cron: "0 */6 * * *"
-    env:
-  # 每次运行的最大提交次数
-  MAX_COMMITS: 5 
-  # 提交的概率 (0-1)，设为 0.8 表示有 20% 的概率今天不提交（休息日）
-  COMMIT_PROBABILITY: 0.8
-
   🤝 Contributing
 如果你有更有趣的随机算法，或者想扩充提交信息的词库，欢迎贡献！
-
-Fork 本仓库
-
-创建你的 Feature 分支 (git checkout -b feature/AmazingFeature)
-
-提交你的修改 (git commit -m 'Add some AmazingFeature')
-
-推送到分支 (git push origin feature/AmazingFeature)
-
-开启 Pull Request
