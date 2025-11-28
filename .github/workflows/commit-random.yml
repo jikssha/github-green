@@ -1,4 +1,4 @@
-name: Randomized Daily Commits (Beijing schedule)
+name: keep github-green 
 
 on:
   schedule:
@@ -30,10 +30,10 @@ jobs:
           ACTOR_EMAIL: ${{ secrets.ACTOR_EMAIL }}
           PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
           SKIP_PROB: "0.09"
-          MAX_COMMITS: "3"
+          MAX_COMMITS: "4"
           MIN_SLEEP: "15"
           MAX_SLEEP: "90"
-          MAX_START_DELAY_MINUTES: "55"
+          MAX_START_DELAY_MINUTES: "60"
         run: |
           chmod +x .github/scripts/random_commit.py
           python3 .github/scripts/random_commit.py
