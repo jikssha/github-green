@@ -30,7 +30,7 @@
 
 Github green可以让你的 GitHub 账号每天自动、随机提交代码，让贡献日历保持自然活跃。
 它利用 GitHub Actions 定时触发脚本，在不同时间点生成随机提交。
-不同于那些只会机械式每天提交一次的笨拙脚本，本项目专注于**“模拟真实人类行为”**。它会在随机的时间、产生随机数量的提交，甚至偶尔“偷懒”不提交，从而生成一张看起来完全自然的贡献热力图。
+不同于那些只会机械式每天提交一次的笨拙脚本，本项目专注于**"模拟真实人类行为"**。它会在随机的时间、产生随机数量的提交，甚至偶尔"偷懒"不提交，从而生成一张看起来完全自然的贡献热力图。
 
 ### 🚀 一键部署步骤
 
@@ -55,19 +55,21 @@ Github green可以让你的 GitHub 账号每天自动、随机提交代码，让
 | `PUSH_TOKEN` | ⚪ 可选 | 个人访问令牌（PAT），默认使用 Actions 自带 Token |
 
 ### 第 3 步：运行参数（可选修改）
-工作流默认：每天北京时间 **09:00 / 16:00 / 23:00** 自动运行；每次随机提交 0～3 次。
-可在 `.github/workflows/commit-random.yml` 中调整参数：
+工作流默认每天分散在 **6 个时间点** 自动运行（模拟全球用户活动）：
+- 北京时间：09:00 / 13:00 / 17:00 / 21:00 / 01:00 / 05:00
+
+每次运行随机提交 0～4 次。可在 `.github/workflows/commit-random.yml` 中调整参数：
 ```yaml
-SKIP_PROB: "0.08"               # 休息概率
-MAX_COMMITS: "3"                # 每次运行最多提交次数
+SKIP_PROB: "0.09"               # 休息概率（周末自动翻倍）
+MAX_COMMITS: "4"                # 每次运行最多提交次数
 MIN_SLEEP: "15"                 # 提交间最短等待（秒）
-MAX_SLEEP: "120"                # 提交间最长等待（秒）
+MAX_SLEEP: "90"                 # 提交间最长等待（秒）
 MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
 ```
 
 ### 第 4 步：运行测试
 1. 打开仓库顶部菜单 **Actions**。
-2. 选择 `Randomized Daily Commits (Beijing schedule)` 工作流。
+2. 选择 `keep github-green` 工作流。
 3. 点击 **Run workflow** 手动运行一次。
 4. 日志出现 `Pushed commits successfully.` 表示成功。
 
@@ -76,16 +78,75 @@ MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
 ## ✨ Features
 
 * 🎲 **智能随机化 (Smart Randomization)**
-    * **随机提交次数**：每天可配置 1 到 N 次提交。
-    * **随机时间点**：模拟真实的开发时间分布（甚至可以避开周末！）。
-    * **随机跳过**：并不是每天都会运行，模拟真实的“休息日”。
+    * **随机提交次数**：每天可配置 1 到 N 次提交（加权分布，1-2 次概率更高）
+    * **随机时间点**：全天 6 个时间点分散触发，模拟全球用户活动
+    * **随机跳过**：并不是每天都会运行，模拟真实的"休息日"
+    * **🆕 周末休息模式**：周六日跳过概率自动翻倍，更符合人类作息
 * ⚡ **GitHub Actions 驱动**
-    * 利用 Crontab 定时触发，无需本地运行，设置一次，永久自动运行。
+    * 利用 Crontab 定时触发，无需本地运行，设置一次，永久自动运行
 * 📝 **动态提交信息**
-    * 从预设的词库中随机选取 Commit Message，看起来就像你在认真写代码。
+    * 从 28+ 条预设词库中随机选取 Commit Message，涵盖 chore/docs/fix/style/refactor 等多种类型
 * 🔒 **安全隐蔽**
-    * 只更新特定的日志文件（如 `LAST_UPDATED`），绝不污染你的核心代码库。
+    * 只更新特定的日志文件，绝不污染你的核心代码库
+    * 建议将仓库设为 Private
 
 ---
-  🤝 Contributing
+
+## 📊 效果对比
+
+使用本项目后，你的 GitHub 贡献热力图将从这样：
+
+| 使用前 | 使用后 |
+|--------|--------|
+| ![使用前](docs/before.png) | ![使用后](docs/after.png) |
+
+> 💡 请将你自己的效果截图放入 `docs/before.png` 和 `docs/after.png`
+
+---
+
+## ❓ FAQ 常见问题
+
+<details>
+<summary><b>为什么我的贡献图还是灰色？</b></summary>
+
+1. **邮箱未关联账号**：确保 `ACTOR_EMAIL` 已添加到你的 GitHub 账户 → Settings → Emails
+2. **使用了 Fork**：Fork 的仓库 commit 不计入贡献图，请使用 "Use this template"
+3. **仓库归属问题**：确保仓库属于你自己（不是 Organization）
+
+</details>
+
+<details>
+<summary><b>如何获取 Personal Access Token (PAT)？</b></summary>
+
+1. 访问 [GitHub Token 设置页](https://github.com/settings/tokens)
+2. 点击 **Generate new token (classic)**
+3. 勾选 `repo` 权限
+4. 生成并复制 Token，添加到仓库 Secrets 的 `PUSH_TOKEN`
+
+> 大多数情况下**不需要** PAT，Actions 自带的 Token 已足够使用
+
+</details>
+
+<details>
+<summary><b>如何确认 Actions 正在运行？</b></summary>
+
+1. 进入仓库 → **Actions** 标签页
+2. 查看 `keep github-green` 工作流的运行记录
+3. 绿色 ✅ 表示成功，点击可查看详细日志
+
+</details>
+
+<details>
+<summary><b>会不会被 GitHub 封号？</b></summary>
+
+本项目只是向你自己的仓库提交代码，完全合规。但建议：
+- 将仓库设为 **Private**
+- 不要过于频繁提交（使用默认配置即可）
+
+</details>
+
+---
+
+## 🤝 Contributing
+
 如果你有更有趣的随机算法，或者想扩充提交信息的词库，欢迎贡献！
