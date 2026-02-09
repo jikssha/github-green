@@ -33,17 +33,26 @@ Github green可以让你的 GitHub 账号每天自动、随机提交代码，让
 不同于那些只会机械式每天提交一次的笨拙脚本，本项目专注于**“模拟真实人类行为”**。它会在随机的时间、产生随机数量的提交，甚至偶尔“偷懒”不提交，从而生成一张看起来完全自然的贡献热力图。
 
 ### 🚀 一键部署步骤
+
 ### 第 1 步：创建仓库
+
+> ⚠️ **重要提示**：请使用 **Use this template**，不要使用 Fork！
+> Fork 仓库产生的 commit 不会计入你的 GitHub 贡献热力图。
+
 1. 打开本模板仓库页面。
 2. 点击右上角 **Use this template → Create a new repository**。
-3. 填写仓库名称（如 `commit-bot`），点击 **Create repository**。
+3. 填写仓库名称（如 `my-green`），勾选 **Private**（推荐），点击 **Create repository**。
 
 ### 第 2 步：设置 Secrets
-1. 打开仓库 → **Settings → Secrets and variables → Actions**。
-2. 点击 **New repository secret**，依次添加：
-   - `ACTOR_NAME` → 你的 GitHub 用户名（如 `jiksska`）
-   - `ACTOR_EMAIL` → 你的 GitHub noreply 邮箱（如 `12345678+jiksska@users.noreply.github.com`）
-   - （可选）`PUSH_TOKEN` → 个人访问令牌（PAT）
+
+1. 打开你的新仓库 → **Settings → Secrets and variables → Actions**。
+2. 点击 **New repository secret**，添加以下变量：
+
+| Secret 名称 | 必填 | 说明 |
+|-------------|------|------|
+| `ACTOR_NAME` | ✅ 必填 | 你的 GitHub 用户名（如 `jiksska`） |
+| `ACTOR_EMAIL` | ⚪ 可选 | 不填则自动生成 `{用户名}@users.noreply.github.com` |
+| `PUSH_TOKEN` | ⚪ 可选 | 个人访问令牌（PAT），默认使用 Actions 自带 Token |
 
 ### 第 3 步：运行参数（可选修改）
 工作流默认：每天北京时间 **09:00 / 16:00 / 23:00** 自动运行；每次随机提交 0～3 次。
