@@ -22,7 +22,13 @@ if start_delay > 0:
     print(f"Initial randomized delay: {start_delay} seconds (~{start_delay//60} minutes)")
     time.sleep(start_delay)
 
-if random.random() < skip_prob:
+# 周末休息模式：周六日跳过概率翻倍
+weekday = datetime.datetime.utcnow().weekday()
+effective_skip_prob = skip_prob * 2 if weekday >= 5 else skip_prob
+if weekday >= 5:
+    print(f"Weekend detected (day={weekday}), skip probability doubled to {effective_skip_prob:.2f}")
+
+if random.random() < effective_skip_prob:
     print("Simulated rest day: skipping commits for today.")
     sys.exit(0)
 
@@ -49,14 +55,40 @@ files = [
     "changelog.md",
     "data/log.txt"
 ]
+
+# 扩展的 Commit Message 词库（25+ 条）
 messages = [
+    # 常规类型
     "chore: update activity log",
-    "docs: update status",
-    "fix: minor log correction",
-    "style: auto-format logs",
-    "ci: scheduled update",
-    "✨ bot activity",
-    "🔧 routine check"
+    "chore: routine maintenance",
+    "chore: sync local changes",
+    "docs: update documentation",
+    "docs: improve readme",
+    "docs: add comments",
+    "fix: minor bug fix",
+    "fix: correct typo",
+    "fix: resolve edge case",
+    "style: format code",
+    "style: clean up whitespace",
+    "style: improve readability",
+    "refactor: simplify logic",
+    "refactor: extract helper function",
+    "refactor: optimize performance",
+    "test: add test cases",
+    "test: update snapshots",
+    "build: update dependencies",
+    "build: bump version",
+    "ci: update workflow",
+    "ci: improve pipeline",
+    # 带 emoji 前缀
+    "✨ add new feature",
+    "🐛 fix minor issue",
+    "📝 update notes",
+    "🔧 tweak configuration",
+    "🚀 improve performance",
+    "♻️ refactor code",
+    "🎨 improve styling",
+    "📦 update packages",
 ]
 
 for f in files:
