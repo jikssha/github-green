@@ -100,30 +100,9 @@ MAX_START_DELAY_MINUTES: "60"   # 启动前随机延迟（分钟）
 |--------|--------|
 | ![使用前](docs/before.png) | ![使用后](docs/after.png) |
 
-> 💡 请将你自己的效果截图放入 `docs/before.png` 和 `docs/after.png`
-
 ---
 
 ## ❓ FAQ 常见问题
-
-<details>
-<summary><b>为什么我的贡献图还是灰色？</b></summary>
-
-1. **邮箱未关联账号**：确保 `ACTOR_EMAIL` 已添加到你的 GitHub 账户 → Settings → Emails
-2. **使用了 Fork**：Fork 的仓库 commit 不计入贡献图，请使用 "Use this template"
-3. **仓库归属问题**：确保仓库属于你自己（不是 Organization）
-
-</details>
-
-<details>
-<summary><b>如何获取 Personal Access Token (PAT)？</b></summary>
-
-1. 访问 [GitHub Token 设置页](https://github.com/settings/tokens)
-2. 点击 **Generate new token (classic)**
-3. 勾选 `repo` 权限
-4. 生成并复制 Token，添加到仓库 Secrets 的 `PUSH_TOKEN`
-
-> 大多数情况下**不需要** PAT，Actions 自带的 Token 已足够使用
 
 </details>
 
